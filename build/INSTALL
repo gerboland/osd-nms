@@ -1,0 +1,10 @@
+Neuros NMS server Installation Guide
+
+To build/install the server,
+
+	1. Build Neuros-Cooler lib, please refer to Neuros-Cooler/README.
+	2. modify 'config' as needed.
+	3. type 'make' for help.
+	5. select proper target to make and install.
+
+		

@@ -1,0 +1,53 @@
+# *  Copyright(C) 2006 Neuros Technology International LLC. 
+# *               <www.neurostechnology.com>
+# *
+# *  OSD NMS server  master config file.........MG 12-06-2006
+
+# build target
+#       ARM  -- Neuros hardware.
+#       HOST -- Host PC
+BUILD_TARGET := ARM
+
+# global test code switch
+#       YES  -- include test code
+#       NO   -- exclude all test code
+INCLUDE_TEST_CODE:= NO
+
+# debug & optimization
+#       YES  -- enable debug and non optimization
+#       NO   -- disable debug and optimization
+DEBUG_OPT       := NO
+
+# manufacture code switch
+#       YES  -- include manufacture support code
+#       NO   -- exclude manufacture support code.
+INCLUDE_MANUFACTURE_CODE:= YES
+
+# product version
+
+
+# BSP root directory
+BSP_ROOT     := $(PRJROOT)
+
+
+# setting up tools etc.
+ifeq ($(BUILD_TARGET), ARM)
+     TOOLS_PREFIX :=arm-linux-
+     PROJ_NMS_ENV :="--ARM--"
+     TOOLS_PATH   :=${PATH}:${BSP_ROOT}/toolchain/bin
+endif
+ifeq ($(BUILD_TARGET), HOST)
+     TOOLS_PREFIX:=
+     PROJ_NMS_ENV="--HOST--"
+     TOOLS_PATH   :=${PATH}     
+endif
+PATH:=${TOOLS_PATH}
+
+
+# tools definition
+CC    := $(TOOLS_PREFIX)gcc
+CXX   := $(TOOLS_PREFIX)g++
+AR    := $(TOOLS_PREFIX)ar
+LD    := $(TOOLS_PREFIX)ld
+NM    := $(TOOLS_PREFIX)nm
+STRIP := $(TOOLS_PREFIX)strip
