@@ -1,0 +1,18 @@
+# Makefile.sub for ./src/server
+
+
+# source modules, include all sub modules if any
+
+
+# source for current module only
+SRC += generic-nms.c \
+	server-main.c \
+	server-play-nms.c \
+	server-play-history.c \
+	server-record-nms.c \
+	server-slideshow-nms.c \
+	server-monitor-nms.c 
+
+
+# include the description for each sub module if any
+

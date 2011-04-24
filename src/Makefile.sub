@@ -1,0 +1,25 @@
+# Makefile.sub for ./src
+
+
+# source modules, include all sub modules if any
+NMS_DIR_SERVER  := $(NMS_DIR_SRC)/server
+NMS_DIR_PLUGIN  := $(NMS_DIR_SRC)/plugin
+
+NMS_MODULES_SRC  = $(NMS_DIR_SERVER) \
+		$(NMS_MODULES_SERVER) \
+		$(NMS_DIR_PLUGIN) \
+		$(NMS_MODULES_PLUGIN) 
+
+ifeq ($(INCLUDE_TEST_CODE), YES)
+NMS_DIR_DEMOS    := $(NMS_DIR_SRC)/demos
+NMS_MODULES_SRC +=  $(NMS_DIR_DEMOS) \
+			$(NMS_MODULES_DEMOS)
+endif
+
+
+# source for current module only
+SRC += srvmain.c
+
+
+# include the description for each sub module if any
+include $(patsubst %,%/Makefile.sub,$(NMS_MODULES_SRC))

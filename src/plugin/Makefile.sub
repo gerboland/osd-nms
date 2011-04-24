@@ -1,0 +1,14 @@
+# Makefile.sub for ./src/plugin
+
+
+# source modules, include all sub modules if any
+
+
+# source for current module only
+SRC += nms-plugin.c \
+       input-plugin.c \
+       output-plugin.c
+       
+
+# include the description for each sub module if any
+
